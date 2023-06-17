@@ -301,16 +301,23 @@ async def novosti_selenium(message: Message):
     print(message.from_user.id)
     # try:
     async with async_playwright() as pw:
+        await message.answer(text='1')
         browser = await pw.chromium.launch(headless=True)
+        await message.answer(text='2')
         context = await browser.new_context()
+        await message.answer(text='3')
         page = await context.new_page()
+        await message.answer(text='4')
         await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         checkbox = page.locator('.card-news__stories-Bu')
+        await message.answer(text='5')
         checkbox_texts = await checkbox.all_inner_texts()
+        await message.answer(text='6')
         v.clear()  # делает список пустым
         print()
         # await message.answer(text=checkbox_texts[0])
         n = [await k.get_attribute('href') for k in (await checkbox.locator('a').all())]
+        await message.answer(text='7')
         for i,y in zip(checkbox_texts[0].split('\n'),n):
             await message.answer(text=i)
             v.append(y)
