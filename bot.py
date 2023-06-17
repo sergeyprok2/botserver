@@ -1,3 +1,5 @@
+from playwright.async_api import async_playwright
+
 print('Господи, помилуй.')
 print('Слава Тебе, Бог наш, Слава Тебе.')
 print()
@@ -21,7 +23,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import Config, load_config
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.async_api import Playwright, async_playwright
 
 config: Config = load_config()
 BOT_TOKEN: str = config.tg_bot.token
@@ -290,21 +292,28 @@ async def novost_5(message: Message):
 
 @dp.message(Text(text='Новости'))
 async def novosti_selenium(message: Message):
+    # v = []
     await message.answer(text='Новости')
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
     print(message.from_user.id)
     await message.answer(text=k)
     print(message.from_user.id)
-    try:
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True)
-            context = browser.new_context()
-            page = context.new_page()
-            page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
-            checkbox = page.locator('.card-news__stories-Bu')
-            print()
-            await message.answer(text=checkbox.all_inner_texts()[0])
+    # try:
+    async with async_playwright() as pw:
+        browser = await pw.chromium.launch(headless=True)
+        context = await browser.new_context()
+        page = await context.new_page()
+        await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
+        checkbox = page.locator('.card-news__stories-Bu')
+        checkbox_texts = await checkbox.all_inner_texts()
+        v.clear()  # делает список пустым
+        print()
+        # await message.answer(text=checkbox_texts[0])
+        n = [await k.get_attribute('href') for k in (await checkbox.locator('a').all())]
+        for i,y in zip(checkbox_texts[0].split('\n'),n):
+            await message.answer(text=i)
+            v.append(y)
 
             # v.clear()   #  делает список пустым
             # g = [i.strip() for i in checkbox.text.split('\n')]   #  список заголовков новостей
@@ -314,9 +323,9 @@ async def novosti_selenium(message: Message):
             #     v.append(u)   #  добавляет ссылки в список
             #     # await message.answer(text=u)
             #     await message.answer(text=y)
-    except:
-        await message.answer(text='Что то пошло не так')
-        print('Что то пошло не так')
+    # except:
+    #     await message.answer(text='Что то пошло не так')
+    #     print('Что то пошло не так')
 
 @dp.message(Text(text='Новости sel'))
 async def novosti_selenium(message: Message):
