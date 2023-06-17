@@ -21,6 +21,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import Config, load_config
+from playwright.sync_api import Playwright, sync_playwright
 
 config: Config = load_config()
 BOT_TOKEN: str = config.tg_bot.token
@@ -286,8 +287,39 @@ async def novost_4(message: Message):
 async def novost_5(message: Message):
     await message.answer(text=v[4])
 
+
 @dp.message(Text(text='Новости'))
-async def answer_if_not_admins_update(message: Message):
+async def novosti_selenium(message: Message):
+    await message.answer(text='Новости')
+    k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
+    print(k)
+    print(message.from_user.id)
+    await message.answer(text=k)
+    print(message.from_user.id)
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True)
+            context = browser.new_context()
+            page = context.new_page()
+            page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
+            checkbox = page.locator('.card-news__stories-Bu')
+            print()
+            await message.answer(text=checkbox.all_inner_texts()[0])
+
+            # v.clear()   #  делает список пустым
+            # g = [i.strip() for i in checkbox.text.split('\n')]   #  список заголовков новостей
+            # n = [k.get_attribute('href') for k in checkbox.find_elements(By.TAG_NAME, 'a')]   #  список ссылок новостей
+            # for y, u in zip(g, n):
+            #     # print(y, u)
+            #     v.append(u)   #  добавляет ссылки в список
+            #     # await message.answer(text=u)
+            #     await message.answer(text=y)
+    except:
+        await message.answer(text='Что то пошло не так')
+        print('Что то пошло не так')
+
+@dp.message(Text(text='Новости sel'))
+async def novosti_selenium(message: Message):
     await message.answer(text='Новости')
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
