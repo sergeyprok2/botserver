@@ -292,7 +292,6 @@ async def novost_5(message: Message):
 
 @dp.message(Text(text='Новости'))
 async def novosti_selenium(message: Message):
-    # v = []
     await message.answer(text='Новости')
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
@@ -301,7 +300,7 @@ async def novosti_selenium(message: Message):
     print(message.from_user.id)
     # try:
     async with async_playwright() as pw:
-        await message.answer(text='100')
+        await message.answer(text='10')
         browser = await pw.chromium.launch(headless=False)
         await message.answer(text='2')
         context = await browser.new_context()
