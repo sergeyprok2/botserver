@@ -302,7 +302,7 @@ async def novosti_selenium(message: Message):
     # try:
     async with async_playwright() as pw:
         await message.answer(text='1')
-        browser = await pw.chromium.launch(headless=True)
+        browser = await pw.chromium.launch(headless=False)
         await message.answer(text='2')
         context = await browser.new_context()
         await message.answer(text='3')
