@@ -295,9 +295,9 @@ async def novosti_selenium(message: Message):
     await message.answer(text='Новости')
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
-    print(message.from_user.id)
+    # print(message.from_user.id)
     await message.answer(text=k)
-    print(message.from_user.id)
+    # print(message.from_user.id)
     # try:
     async with async_playwright() as pw:
         await message.answer(text='100')
