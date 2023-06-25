@@ -308,6 +308,7 @@ async def novosti_selenium(message: Message):
         page = await context.new_page()
         await message.answer(text='4')
         await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
+        await message.answer(text='4')
         checkbox = page.locator('.card-news__stories-Bu')
         await message.answer(text='5')
         checkbox_texts = await checkbox.all_inner_texts()
