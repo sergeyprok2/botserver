@@ -312,7 +312,7 @@ async def novosti_selenium(message: Message):
         checkbox = page.locator('.card-news__stories-Bu')
         await message.answer(text='5')
         checkbox_texts = await checkbox.all_inner_texts()
-        await message.answer(text='6')
+        await message.answer(text=checkbox_texts[0])
         v.clear()  # делает список пустым
         print()
         # await message.answer(text=checkbox_texts[0])
