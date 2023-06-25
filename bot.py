@@ -317,7 +317,9 @@ async def novosti_selenium(message: Message):
         # await message.answer(text=checkbox_texts[0])
         n = [await k.get_attribute('href') for k in (await checkbox.locator('a').all())]
         await message.answer(text='7')
-        for i,y in zip(checkbox_texts[0].split('\n'),n):
+        d=checkbox_texts[0].split('\n')
+        await message.answer(text='8')
+        for i,y in zip(d,n):
             await message.answer(text=i)
             v.append(y)
 
