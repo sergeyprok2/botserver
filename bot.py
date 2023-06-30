@@ -313,6 +313,7 @@ async def novosti_selenium(message: Message):
         await message.answer(text='выполняет строку checkbox_texts = await checkbox.all_inner_texts()')
         checkbox_texts = await checkbox.all_inner_texts()
         if checkbox_texts:
+            await message.answer(text='выполняет строку await message.answer(text=checkbox_texts[0])')
             await message.answer(text=checkbox_texts[0])
         else:
             await message.answer(text='checkbox_texts пустой')
