@@ -319,7 +319,7 @@ async def novosti_selenium(message: Message):
         checkbox = page.locator('.card-news__stories-Bu')
         await message.answer(text='выполняет строку checkbox_texts = await checkbox.all_inner_texts()')
         # checkbox_texts = await checkbox.all_inner_texts()
-        checkbox_texts = [await kl.text_content() for kl in (await checkbox.locator('span').all())]
+        checkbox_texts = [await kl.get_attribute('aria-label') for kl in (await checkbox.locator('span').all())]
         if checkbox_texts:
             await message.answer(text='выполняет строку await message.answer(text=checkbox_texts[0])')
             await message.answer(text=checkbox_texts[0])
