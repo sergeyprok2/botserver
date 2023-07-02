@@ -307,9 +307,9 @@ async def novosti_selenium(message: Message):
         await message.answer(text='выполняет строку page = await context.new_page()')
         page = await context.new_page()
         await message.answer(text='заходит на страницу сайта')
-        await message.answer(text='начался time.sleep')
-        time.sleep(100)
-        await message.answer(text='закончился time.sleep')
+        # await message.answer(text='начался time.sleep')
+        # time.sleep(100)
+        # await message.answer(text='закончился time.sleep')
         response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         if response.status == 200:
             await message.answer(text='200')
