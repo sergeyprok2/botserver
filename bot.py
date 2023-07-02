@@ -307,6 +307,9 @@ async def novosti_selenium(message: Message):
         await message.answer(text='выполняет строку page = await context.new_page()')
         page = await context.new_page()
         await message.answer(text='заходит на страницу сайта')
+        await message.answer(text='начался time.sleep')
+        time.sleep(100)
+        await message.answer(text='закончился time.sleep')
         response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         if response.status == 200:
             await message.answer(text='200')
@@ -315,7 +318,8 @@ async def novosti_selenium(message: Message):
         await message.answer(text="выполняет строку checkbox = page.locator('.card-news__stories-Bu')")
         checkbox = page.locator('.card-news__stories-Bu')
         await message.answer(text='выполняет строку checkbox_texts = await checkbox.all_inner_texts()')
-        checkbox_texts = await checkbox.all_inner_texts()
+        # checkbox_texts = await checkbox.all_inner_texts()
+        checkbox_texts = [await kl.text_content() for kl in (await checkbox.locator('span').all())]
         if checkbox_texts:
             await message.answer(text='выполняет строку await message.answer(text=checkbox_texts[0])')
             await message.answer(text=checkbox_texts[0])
@@ -325,6 +329,7 @@ async def novosti_selenium(message: Message):
         print()
         # await message.answer(text=checkbox_texts[0])
         n = [await k.get_attribute('href') for k in (await checkbox.locator('a').all())]
+
         await message.answer(text="выполняет строку d=checkbox_texts[0].split('\n')")
         d=checkbox_texts[0].split('\n')
         await message.answer(text='выполняет цикл ')
