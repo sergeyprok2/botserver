@@ -302,10 +302,10 @@ async def novosti_selenium(message: Message):
     # print(message.from_user.id)
     # try:
     async with async_playwright() as pw:
-        proxy_server = {'server': 'http://195.216.135.182:8000', 'username': 'XvQx6z', 'password': '8k8KKM'}
+        # proxy_server = {'server': 'http://195.216.135.182:8000', 'username': 'XvQx6z', 'password': '8k8KKM'}
         # proxy_server = {'server': 'http://195.216.135.182:8000', 'https': 'https://195.216.135.182:8000',}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
-        browser = await pw.chromium.launch(headless=True,proxy=proxy_server)
+        browser = await pw.chromium.launch(headless=True)
         await message.answer(text='выполняет строку context = await browser.new_context()')
         context = await browser.new_context()
         await message.answer(text='выполняет строку page = await context.new_page()')
@@ -314,8 +314,8 @@ async def novosti_selenium(message: Message):
         # await message.answer(text='начался time.sleep')
         # time.sleep(100)
         # await message.answer(text='закончился time.sleep')
-        # response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
-        response = await page.goto("https://dzen.ru/?yredirect=true")
+        response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
+        # response = await page.goto("https://dzen.ru/?yredirect=true")
         if response.status == 200:
             await message.answer(text='200')
         else:
