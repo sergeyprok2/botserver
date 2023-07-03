@@ -305,7 +305,8 @@ async def novosti_selenium(message: Message):
         # proxy_server = {'server': 'http://195.216.135.182:8000', 'username': 'XvQx6z', 'password': '8k8KKM'}
         # proxy_server = {'server': 'http://195.216.135.182:8000', 'https': 'https://195.216.135.182:8000',}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
-        browser = await pw.chromium.launch(headless=True)
+        # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
+        browser = await pw.chromium.launch(headless=False)
         await message.answer(text='выполняет строку context = await browser.new_context()')
         context = await browser.new_context()
         await message.answer(text='выполняет строку page = await context.new_page()')
@@ -316,6 +317,8 @@ async def novosti_selenium(message: Message):
         # await message.answer(text='закончился time.sleep')
         # response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         response = await page.goto("https://dzen.ru/?yredirect=true")
+        # response = await page.goto("https://stepik.org/lesson/716118/step/4?unit=716910")
+        # response = await page.goto("https://google.com")
         if response.status == 200:
             await message.answer(text='200')
         else:
@@ -323,8 +326,8 @@ async def novosti_selenium(message: Message):
         await message.answer(text="выполняет строку checkbox = page.locator('.card-news__stories-Bu')")
         checkbox = page.locator('.card-news__stories-Bu')
         await message.answer(text='выполняет строку checkbox_texts = await checkbox.all_inner_texts()')
-        # checkbox_texts = await checkbox.all_inner_texts()
-        checkbox_texts = [await kl.get_attribute('aria-label') for kl in (await checkbox.locator('span').all())]
+        checkbox_texts = await checkbox.all_inner_texts()
+        # checkbox_texts = [await kl.get_attribute('aria-label') for kl in (await checkbox.locator('span').all())]
         if checkbox_texts:
             await message.answer(text='выполняет строку await message.answer(text=checkbox_texts[0])')
             await message.answer(text=checkbox_texts[0])
