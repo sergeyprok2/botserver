@@ -24,7 +24,7 @@ from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButt
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import Config, load_config
 from playwright.async_api import Playwright, async_playwright
-from playwright_stealth import stealth_async
+# from playwright_stealth import stealth_async
 
 config: Config = load_config()
 BOT_TOKEN: str = config.tg_bot.token
@@ -317,7 +317,7 @@ async def novosti_selenium(message: Message):
         context = await browser.new_context(proxy=proxy_server)
         await message.answer(text='выполняет строку page = await context.new_page()')
         page = await context.new_page()
-        await stealth_async(page)
+        # await stealth_async(page)
         await message.answer(text='заходит на страницу сайта')
         # await message.answer(text='начался time.sleep')
         # time.sleep(100)
