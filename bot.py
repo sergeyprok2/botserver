@@ -304,7 +304,7 @@ async def novosti_selenium(message: Message):
     proxy_server = {
         'server': 'http://195.216.135.182:8000',
         'username': 'XvQx6z',
-        'password': '8k8KKM'
+        'password': '8k8KKM',
     }
     async with async_playwright() as pw:
 
