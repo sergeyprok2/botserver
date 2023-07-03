@@ -306,7 +306,7 @@ async def novosti_selenium(message: Message):
         # proxy_server = {'server': 'http://195.216.135.182:8000', 'https': 'https://195.216.135.182:8000',}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
-        browser = await pw.chromium.launch(headless=False)
+        browser = await pw.chromium.launch(headless=True)
         await message.answer(text='выполняет строку context = await browser.new_context()')
         context = await browser.new_context()
         await message.answer(text='выполняет строку page = await context.new_page()')
