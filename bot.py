@@ -314,8 +314,8 @@ async def novosti_selenium(message: Message):
         # await message.answer(text='начался time.sleep')
         # time.sleep(100)
         # await message.answer(text='закончился time.sleep')
-        response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
-        # response = await page.goto("https://dzen.ru/?yredirect=true")
+        # response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
+        response = await page.goto("https://dzen.ru/?yredirect=true")
         if response.status == 200:
             await message.answer(text='200')
         else:
