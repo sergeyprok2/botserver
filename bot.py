@@ -1,4 +1,4 @@
-from playwright.async_api import async_playwright
+# from playwright.async_api import async_playwright
 
 print('Господи, помилуй.')
 print('Слава Тебе, Бог наш, Слава Тебе.')
