@@ -308,7 +308,7 @@ async def novosti_selenium(message: Message):
         'password': '8k8KKM',
     }
     async with async_playwright() as pw:
-
+        rt=0
         # proxy_server = {'server': 'http://195.216.135.182:8000', 'https': 'https://195.216.135.182:8000',}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
