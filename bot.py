@@ -26,8 +26,8 @@ from config import Config, load_config
 from playwright.async_api import Playwright, async_playwright
 # from playwright_stealth import stealth_async
 
-config= load_config()
-BOT_TOKEN: str = config.tg_bot.token
+config1= load_config()
+BOT_TOKEN: str = config1.tg_bot.token
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
 # API_TOKEN: str = '5959145787:AAHKfsD3UgNhcXuY78EoV0tqE8ZNAn7lK6w'
