@@ -309,7 +309,7 @@ async def novosti_selenium(message: Message):
     # }
     async with async_playwright() as pw:
         rt=0
-        proxy_host = '195.216.135.182:8000'
+        proxy_host = '195.216.135.182'
         proxy_port = '8000'
         username = 'XvQx6z'
         password = '8k8KKM'
