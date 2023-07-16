@@ -324,7 +324,9 @@ async def novosti_selenium(message: Message):
         # await message.answer(text='закончился time.sleep')
         # response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         # response = await page.goto("https://dzen.ru/?yredirect=true")
+        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
         response = await page.goto("https://dzen.ru")
+        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
         # response = await page.goto("https://stepik.org/lesson/716118/step/4?unit=716910")
         # response = await page.goto("https://google.com")
         if response.status == 200:
