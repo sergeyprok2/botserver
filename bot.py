@@ -22,7 +22,7 @@ from selenium.webdriver.common.by import By
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from config import Config, load_config,proxies
+from config import Config, load_config
 from playwright.async_api import Playwright, async_playwright
 # from playwright_stealth import stealth_async
 
