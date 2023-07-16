@@ -326,12 +326,12 @@ async def novosti_selenium(message: Message):
         # response = await page.goto("https://dzen.ru/?yredirect=true")
         await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
         response = await page.goto("https://dzen.ru")
-        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
+        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png1')
         # response = await page.goto("https://stepik.org/lesson/716118/step/4?unit=716910")
         # response = await page.goto("https://google.com")
         if response.status == 200:
             await message.answer(text='200')
-            await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
+            await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png2')
 
         else:
             await message.answer(text='не 200')
