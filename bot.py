@@ -329,7 +329,7 @@ async def novosti_selenium(message: Message):
         # response = await page.goto("https://google.com")
         if response.status == 200:
             await message.answer(text='200')
-            await page.screenshot(path='/root/tike/botserver/screenshot.png')
+            await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
 
         else:
             await message.answer(text='не 200')
