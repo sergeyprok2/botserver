@@ -22,7 +22,7 @@ from selenium.webdriver.common.by import By
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from config import Config, load_config
+from config import Config, load_config,proxies
 from playwright.async_api import Playwright, async_playwright
 # from playwright_stealth import stealth_async
 
@@ -309,7 +309,7 @@ async def novosti_selenium(message: Message):
     }
     async with async_playwright() as pw:
         rt=0
-        # proxy_server = {'server': 'http://195.216.135.182:8000', 'https': 'https://195.216.135.182:8000',}
+        # proxy_server = {'server': 'http://195.279.389.135:8000', 'username': 'fgd5b7gh', 'password': 'uyf6f'}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
         browser = await pw.chromium.launch(headless=True)
