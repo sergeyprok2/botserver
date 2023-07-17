@@ -315,7 +315,7 @@ async def novosti_selenium(message: Message):
         rt=0
 
 
-        proxy_server = { "server": f"socks5://{username}:{password}@{proxy_host}:{proxy_port}" }
+        proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
 
         # proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
