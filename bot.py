@@ -302,21 +302,22 @@ async def novosti_selenium(message: Message):
 
     # print(message.from_user.id)
     # try:
+    proxy_host = '195.216.135.182'
+    proxy_port = '8000'
+    username = 'XvQx6z'
+    password = '8k8KKM'
     # proxy_server = {
-    #     'server': 'http://195.216.135.182:8000',
-    #     'username': 'XvQx6z',
-    #     'password': '8k8KKM',
+    #     'server': f"http://{proxy_host}:{proxy_port}",
+    #     'username': username,
+    #     'password': password,
     # }
     async with async_playwright() as pw:
         rt=0
-        proxy_host = '195.216.135.182'
-        proxy_port = '8000'
-        username = 'XvQx6z'
-        password = '8k8KKM'
 
-        proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
 
-        # proxy_server = {'server': 'http://195.279.389.135:8000', 'username': 'fgd5b7gh', 'password': 'uyf6f'}
+        proxy_server = { "server": f"https://{username}:{password}@{proxy_host}:{proxy_port}" }
+
+        # proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
         browser = await pw.chromium.launch(headless=True)
