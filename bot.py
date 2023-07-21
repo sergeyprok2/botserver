@@ -302,10 +302,15 @@ async def novosti_selenium(message: Message):
 
     # print(message.from_user.id)
     # try:
-    proxy_host = '195.216.135.182'
+    # proxy_host = '195.216.135.182'
+    # proxy_port = '8000'
+    # username = 'XvQx6z'
+    # password = '8k8KKM'
+
+    proxy_host = '168.81.59.128'
     proxy_port = '8000'
-    username = 'XvQx6z'
-    password = '8k8KKM'
+    username = 'RLdrq9'
+    password = 'haRzKV'
     # proxy_server = {
     #     'server': f"http://{proxy_host}:{proxy_port}",
     #     'username': username,
