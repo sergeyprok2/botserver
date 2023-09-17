@@ -79,24 +79,24 @@ async def process_start_command(message: Message):
 
 
 # Список с ID администраторов бота. !!!Замените на ваш!!!
-admin_ids: list[int] = [1942504567]
+# admin_ids: list[int] = [1942504567]
 
 
 # Собственный фильтр, проверяющий юзера на админа
-class IsAdmin(BaseFilter):
-    def __init__(self, admin_ids: list[int]) -> None:
-        # В качестве параметра фильтр принимает список с целыми числами
-        self.admin_ids = admin_ids
-
-    async def __call__(self, message: Message) -> bool:
-        return message.from_user.id in self.admin_ids
-
-
-# Этот хэндлер будет срабатывать, если апдейт от админа
-@dp.message(IsAdmin(admin_ids))
-async def answer_if_admins_update(message: Message):
-    print(message.from_user.id)
-    await message.answer(text='Вы админ')
+# class IsAdmin(BaseFilter):
+#     def __init__(self, admin_ids: list[int]) -> None:
+#         # В качестве параметра фильтр принимает список с целыми числами
+#         self.admin_ids = admin_ids
+#
+#     async def __call__(self, message: Message) -> bool:
+#         return message.from_user.id in self.admin_ids
+#
+#
+# # Этот хэндлер будет срабатывать, если апдейт от админа
+# @dp.message(IsAdmin(admin_ids))
+# async def answer_if_admins_update(message: Message):
+#     print(message.from_user.id)
+#     await message.answer(text='Вы админ')
 
 
 
