@@ -270,6 +270,53 @@ async def vk_selenium(message: Message):
 # Этот хэндлер будет срабатывать, если апдейт не от админа
 v=[]   #  список ссылок новостей
 
+# cookies = {
+#             'KIykI': '1',
+#             'tmr_lvid': '8577b70851cc9276af8a0e173298cf19',
+#             'tmr_lvidTS': '1664015288689',
+#             'Zen-User-Data': '{%22zen-theme%22:%22light%22}',
+#             'tmr_detect': '1%7C1689937622793',
+#             '_yasc': 'kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==',
+#             '_ym_isad': '1',
+#             'Session_id': 'noauth:1689937589',
+#             'mda2_beacon': '1689937589064',
+#             'sessar': '1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc',
+#             'sso_status': 'sso.passport.yandex.ru:synchronized',
+#             'yandex_login': '',
+#             'yandexuid': '3150064901655672013',
+#             'ys': 'c_chck.3683064152',
+#             'zen_sso_checked': '1',
+#             '_ym_d': '1687116993',
+#             '_ym_uid': '1666960296819424637',
+#             'addruid': 'C16j8a1P7O2ts4G8U3J5o1r30X',
+#             'sso_checked': '1',
+#             'zen_gid': '11291',
+#         }
+
+cookies = [
+            {"name": "KIykI", "value": "1", "url": "http://dzen.ru"},
+            {"name": "tmr_lvid", "value": "8577b70851cc9276af8a0e173298cf19", "url": "http://dzen.ru"},
+            {"name": "tmr_lvidTS", "value": "1664015288689", "url": "http://dzen.ru"},
+            {"name": "Zen-User-Data", "value": '{"zen-theme":"light"}', "url": "http://dzen.ru"},
+            {"name": "tmr_detect", "value": "1%7C1689937622793", "url": "http://dzen.ru"},
+            {"name": "_yasc", "value": "kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==", "url": "http://dzen.ru"},
+            {"name": "_ym_isad", "value": "1", "url": "http://dzen.ru"},
+            {"name": "Session_id", "value": "noauth:1689937589", "url": "http://dzen.ru"},
+            {"name": "mda2_beacon", "value": "1689937589064", "url": "http://dzen.ru"},
+            {"name": "sessar", "value": "1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc", "url": "http://dzen.ru"},
+            {"name": "sso_status", "value": "sso.passport.yandex.ru:synchronized", "url": "http://dzen.ru"},
+            {"name": "yandex_login", "value": "", "url": "http://dzen.ru"},
+            {"name": "yandexuid", "value": "3150064901655672013", "url": "http://dzen.ru"},
+            {"name": "ys", "value": "c_chck.3683064152", "url": "http://dzen.ru"},
+            {"name": "zen_sso_checked", "value": "1", "url": "http://dzen.ru"},
+            {"name": "_ym_d", "value": "1687116993", "url": "http://dzen.ru"},
+            {"name": "_ym_uid", "value": "1666960296819424637", "url": "http://dzen.ru"},
+            {"name": "addruid", "value": "C16j8a1P7O2ts4G8U3J5o1r30X", "url": "http://dzen.ru"},
+            {"name": "sso_checked", "value": "1", "url": "http://dzen.ru"},
+            {"name": "zen_gid", "value": "11291", "url": "http://dzen.ru"}
+        ]
+
+
 @dp.message(Text(text='1'))
 async def novost_1(message: Message):
     await message.answer(text=v[0])
@@ -311,6 +358,8 @@ async def novosti_selenium(message: Message):
     proxy_port = '8000'
     username = 'RLdrq9'
     password = 'haRzKV'
+
+
     # proxy_server = {
     #     'server': f"http://{proxy_host}:{proxy_port}",
     #     'username': username,
@@ -318,7 +367,8 @@ async def novosti_selenium(message: Message):
     # }
     async with async_playwright() as pw:
         rt=0
-
+        y=cookies
+        # context = await browser.new_context(cookies=cookie, proxy=proxy_server)
 
         proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
 
@@ -327,9 +377,12 @@ async def novosti_selenium(message: Message):
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
         browser = await pw.chromium.launch(headless=True)
         await message.answer(text='выполняет строку context = await browser.new_context()')
-        context = await browser.new_context(proxy=proxy_server)
+        context = await browser.new_context()
         await message.answer(text='выполняет строку page = await context.new_page()')
         page = await context.new_page()
+        await context.add_cookies(y)
+
+
         # await stealth_async(page)
         await message.answer(text='заходит на страницу сайта')
         # await message.answer(text='начался time.sleep')
@@ -337,14 +390,14 @@ async def novosti_selenium(message: Message):
         # await message.answer(text='закончился time.sleep')
         # response = await page.goto("https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru")
         # response = await page.goto("https://dzen.ru/?yredirect=true")
-        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
+        # await page.screenshot(path='/root/tike/botserver/screenshots/screenshot.png')
         response = await page.goto("http://dzen.ru")
-        await page.screenshot(path='/root/tike/botserver/screenshots/screenshot1.png')
+        # await page.screenshot(path='/root/tike/botserver/screenshots/screenshot1.png')
         # response = await page.goto("https://stepik.org/lesson/716118/step/4?unit=716910")
         # response = await page.goto("https://google.com")
         if response.status == 200:
             await message.answer(text='200')
-            await page.screenshot(path='/root/tike/botserver/screenshots/screenshot2.png')
+            # await page.screenshot(path='/root/tike/botserver/screenshots/screenshot2.png')
 
         else:
             await message.answer(text='не 200')
@@ -390,27 +443,29 @@ async def novosti_selenium(message: Message):
     print(message.from_user.id)
     await message.answer(text=k)
     print(message.from_user.id)
-    try:
-        options_chrome = webdriver.ChromeOptions()
-        # options_chrome.add_extension('coordinates.crx')
-        # zzz=options=options_chrome
+    # try:
+    options_chrome = webdriver.ChromeOptions()
+    # options_chrome.add_extension('coordinates.crx')
+    # zzz=options=options_chrome
 
-        options_chrome.add_argument('--headless=chrome')
-        with webdriver.Chrome(options=options_chrome) as browser:
-            browser.get('https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru')
-            checkbox = browser.find_element(By.CLASS_NAME, 'card-news__stories-Bu')   #
+    options_chrome.add_argument('--headless=chrome')
+    with webdriver.Chrome(options=options_chrome) as browser:
+        await message.answer(text='1')
+        browser.get('https://dzen.ru/?clid=1946579&win=90&yredirect=true&utm_referer=sso.dzen.ru')
+        await message.answer(text='2')
+        checkbox = browser.find_element(By.CLASS_NAME, 'card-news__stories-Bu')   #
 
-            v.clear()   #  делает список пустым
-            g = [i.strip() for i in checkbox.text.split('\n')]   #  список заголовков новостей
-            n = [k.get_attribute('href') for k in checkbox.find_elements(By.TAG_NAME, 'a')]   #  список ссылок новостей
-            for y, u in zip(g, n):
-                # print(y, u)
-                v.append(u)   #  добавляет ссылки в список
-                # await message.answer(text=u)
-                await message.answer(text=y)
-    except:
-        await message.answer(text='Что то пошло не так')
-        print('Что то пошло не так')
+        v.clear()   #  делает список пустым
+        g = [i.strip() for i in checkbox.text.split('\n')]   #  список заголовков новостей
+        n = [k.get_attribute('href') for k in checkbox.find_elements(By.TAG_NAME, 'a')]   #  список ссылок новостей
+        for y, u in zip(g, n):
+            # print(y, u)
+            v.append(u)   #  добавляет ссылки в список
+            # await message.answer(text=u)
+            await message.answer(text=y)
+    # except:
+    #     await message.answer(text='Что то пошло не так')
+    #     print('Что то пошло не так')
 
 
 
