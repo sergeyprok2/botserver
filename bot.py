@@ -1,5 +1,5 @@
 # from playwright.async_api import async_playwright
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 
 print('Господи, помилуй.')
 print('Слава Тебе, Бог наш, Слава Тебе.')
