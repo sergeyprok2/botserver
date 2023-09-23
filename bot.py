@@ -1,4 +1,5 @@
 # from playwright.async_api import async_playwright
+from webdriver_manager.chrome import ChromeDriverManager
 
 print('Господи, помилуй.')
 print('Слава Тебе, Бог наш, Слава Тебе.')
@@ -8,7 +9,7 @@ import requests, csv, json, os, sys, time, schedule, random
 # from crontab import CronTab
 from datetime import datetime
 # import pandas as pd
-
+from bs4 import BeautifulSoup
 import requests, random
 import time
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
@@ -293,28 +294,29 @@ v=[]   #  список ссылок новостей
 #             'zen_gid': '11291',
 #         }
 
-cookies = [
-            {"name": "KIykI", "value": "1", "url": "http://dzen.ru"},
-            {"name": "tmr_lvid", "value": "8577b70851cc9276af8a0e173298cf19", "url": "http://dzen.ru"},
-            {"name": "tmr_lvidTS", "value": "1664015288689", "url": "http://dzen.ru"},
-            {"name": "Zen-User-Data", "value": '{"zen-theme":"light"}', "url": "http://dzen.ru"},
-            {"name": "tmr_detect", "value": "1%7C1689937622793", "url": "http://dzen.ru"},
-            {"name": "_yasc", "value": "kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==", "url": "http://dzen.ru"},
-            {"name": "_ym_isad", "value": "1", "url": "http://dzen.ru"},
-            {"name": "Session_id", "value": "noauth:1689937589", "url": "http://dzen.ru"},
-            {"name": "mda2_beacon", "value": "1689937589064", "url": "http://dzen.ru"},
-            {"name": "sessar", "value": "1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc", "url": "http://dzen.ru"},
-            {"name": "sso_status", "value": "sso.passport.yandex.ru:synchronized", "url": "http://dzen.ru"},
-            {"name": "yandex_login", "value": "", "url": "http://dzen.ru"},
-            {"name": "yandexuid", "value": "3150064901655672013", "url": "http://dzen.ru"},
-            {"name": "ys", "value": "c_chck.3683064152", "url": "http://dzen.ru"},
-            {"name": "zen_sso_checked", "value": "1", "url": "http://dzen.ru"},
-            {"name": "_ym_d", "value": "1687116993", "url": "http://dzen.ru"},
-            {"name": "_ym_uid", "value": "1666960296819424637", "url": "http://dzen.ru"},
-            {"name": "addruid", "value": "C16j8a1P7O2ts4G8U3J5o1r30X", "url": "http://dzen.ru"},
-            {"name": "sso_checked", "value": "1", "url": "http://dzen.ru"},
-            {"name": "zen_gid", "value": "11291", "url": "http://dzen.ru"}
-        ]
+cookies = {
+    "KIykI": "1",
+    "tmr_lvid": "8577b70851cc9276af8a0e173298cf19",
+    "tmr_lvidTS": "1664015288689",
+    "Zen-User-Data": '{"zen-theme":"light"}',
+    "tmr_detect": "1%7C1689937622793",
+    "_yasc": "kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==",
+    "_ym_isad": "1",
+    "Session_id": "noauth:1689937589",
+    "mda2_beacon": "1689937589064",
+    "sessar": "1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc",
+    "sso_status": "sso.passport.yandex.ru:synchronized",
+    "yandex_login": "",
+    "yandexuid": "3150064901655672013",
+    "ys": "c_chck.3683064152",
+    "zen_sso_checked": "1",
+    "_ym_d": "1687116993",
+    "_ym_uid": "1666960296819424637",
+    "addruid": "C16j8a1P7O2ts4G8U3J5o1r30X",
+    "sso_checked": "1",
+    "zen_gid": "11291"
+}
+
 
 
 @dp.message(Text(text='1'))
@@ -338,8 +340,8 @@ async def novost_5(message: Message):
     await message.answer(text=v[4])
 
 
-@dp.message(Text(text='Новости'))
-async def novosti_selenium(message: Message):
+@dp.message(Text(text='Новости1'))
+async def novosti_playwright(message: Message):
     await message.answer(text='Новости')
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
@@ -370,14 +372,14 @@ async def novosti_selenium(message: Message):
         y=cookies
         # context = await browser.new_context(cookies=cookie, proxy=proxy_server)
 
-        proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
+        # proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
 
-        # proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
+        proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
         await message.answer(text='выполняет строку browser = await pw.chromium.launch(headless=True)')
         # browser = await pw.chromium.launch(headless=False,proxy=proxy_server)
         browser = await pw.chromium.launch(headless=True)
         await message.answer(text='выполняет строку context = await browser.new_context()')
-        context = await browser.new_context()
+        context = await browser.new_context(proxy=proxy_server)
         await message.answer(text='выполняет строку page = await context.new_page()')
         page = await context.new_page()
         await context.add_cookies(y)
@@ -434,6 +436,103 @@ async def novosti_selenium(message: Message):
     # except:
     #     await message.answer(text='Что то пошло не так')
     #     print('Что то пошло не так')
+
+@dp.message(Text(text='Новости'))
+async def novosti_playwright(message: Message):
+    await message.answer(text='Новости')
+    k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
+    print(k)
+    # print(message.from_user.id)
+    await message.answer(text=k)
+    # proxy_server = 'http://195.216.135.182:8000'
+
+    # print(message.from_user.id)
+    # try:
+    # proxy_host = '195.216.135.182'
+    # proxy_port = '8000'
+    # username = 'XvQx6z'
+    # password = '8k8KKM'
+
+    proxy_host = '168.81.59.128'
+    proxy_port = '8000'
+    username = 'RLdrq9'
+    password = 'haRzKV'
+
+
+    # proxy_server = {
+    #     'server': f"http://{proxy_host}:{proxy_port}",
+    #     'username': username,
+    #     'password': password,
+    # }
+
+    rt=0
+    # y=cookies
+    # context = await browser.new_context(cookies=cookie, proxy=proxy_server)
+
+    # proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
+
+    proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
+    cookies = {
+        'yandex_login': '',
+        'yandexuid': '7986167821683047642',
+        '_ym_uid': '1686945243823701731',
+        '_ym_d': '1686945243',
+        'tmr_lvid': '6dfaf88cc5fc7a63da810b3638975cea',
+        'tmr_lvidTS': '1686945243391',
+        'vid': '873af10575d61ad3',
+        'zen_gid': '11291',
+        'KIykI': '1',
+        'addruid': 'n16R9TX4T96GB46RQ73l0Gk8r0',
+        'crookie': 'vg6vCy2sSLN3IguJi3hebBUryljWqn3XikbJgbKXylrP2zjdkjWZabI07McqbDa6pDmKVcxGxpvfpteJnjH/gW7Jg/4=',
+        'cmtchd': 'MTY5NTA1Mzc5ODU3OQ==',
+        'zen_sso_checked': '1',
+        'Session_id': 'noauth:1695491008',
+        'sessar': '1.1182.CiCTtdFAQ4KxcrqqRuU5OfTxPEx2NxOTPS0JmyNRfcUDHw.m6l8ornGoaYDXpT0QK4hRDMmGFMHEjuGMq-Io0ayrM8',
+        'ys': 'c_chck.1308660127',
+        'mda2_beacon': '1695491008335',
+        '_ym_isad': '1',
+        'Zen-User-Data': '{%22zen-theme%22:%22light%22}',
+        'ask_city': '+',
+        'tmr_detect': '1%7C1695496006520',
+        '_yasc': '0UuriHacVByJsdceSZ4O1Y++vvsW7Vmfv+MBQs80sAa1WxFv8oiPTbmOXzFbXBxdKiZkYQ==',
+    }
+
+    headers = {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Cache-Control': 'max-age=0',
+        'Connection': 'keep-alive',
+        # 'Cookie': 'yandex_login=; yandexuid=7986167821683047642; _ym_uid=1686945243823701731; _ym_d=1686945243; tmr_lvid=6dfaf88cc5fc7a63da810b3638975cea; tmr_lvidTS=1686945243391; vid=873af10575d61ad3; zen_gid=11291; KIykI=1; addruid=n16R9TX4T96GB46RQ73l0Gk8r0; crookie=vg6vCy2sSLN3IguJi3hebBUryljWqn3XikbJgbKXylrP2zjdkjWZabI07McqbDa6pDmKVcxGxpvfpteJnjH/gW7Jg/4=; cmtchd=MTY5NTA1Mzc5ODU3OQ==; zen_sso_checked=1; Session_id=noauth:1695491008; sessar=1.1182.CiCTtdFAQ4KxcrqqRuU5OfTxPEx2NxOTPS0JmyNRfcUDHw.m6l8ornGoaYDXpT0QK4hRDMmGFMHEjuGMq-Io0ayrM8; ys=c_chck.1308660127; mda2_beacon=1695491008335; _ym_isad=1; Zen-User-Data={%22zen-theme%22:%22light%22}; ask_city=+; tmr_detect=1%7C1695496006520; _yasc=0UuriHacVByJsdceSZ4O1Y++vvsW7Vmfv+MBQs80sAa1WxFv8oiPTbmOXzFbXBxdKiZkYQ==',
+        'Referer': 'https://m.dzen.ru/news/story/RIA_Novosti_razvedchiki_unichtozhili_tank_Leopard_sehkipazhem_armii_FRG--a161111dcc1f1326047292a0c367568d?lang=ru&from=main_portal&fan=1&stid=STEwBuJff9DUvftYhaMr&t=1695493665&persistent_id=4666199950789852023&tst=1695494051&story=37ca3162-a963-5720-91c2-510fa300c030&issue_tld=ru&contour=exp0&utm_referrer=m.dzen.ru',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-User': '?1',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36',
+        'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
+        'sec-ch-ua-mobile': '?1',
+        'sec-ch-ua-platform': '"Android"',
+    }
+
+    response = requests.get('https://m.dzen.ru/', cookies=cookies, headers=headers)
+    # response = requests.get(url="https://dzen.ru", headers=headers,cookies=y)
+    # print(response.text)
+    if response.status_code == 200:
+        await message.answer(text='200')
+        response.encoding = 'utf-8'
+        soup = BeautifulSoup(response.text, 'html.parser')
+        g=soup.find_all('ul', class_="card-news__stories-Bu")
+        for i in g:
+            j=i.text
+            await message.answer(text=j)
+        print()
+        print()
+
+        # await page.screenshot(path='/root/tike/botserver/screenshots/screenshot2.png')
+
+    else:
+        await message.answer(text='не 200')
 
 @dp.message(Text(text='Новости sel'))
 async def novosti_selenium(message: Message):
