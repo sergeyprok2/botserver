@@ -472,48 +472,7 @@ async def novosti_playwright(message: Message):
     # proxy_server = { "server": f"http://{username}:{password}@{proxy_host}:{proxy_port}" }
 
     proxy_server = {'server': f"http://{proxy_host}:{proxy_port}", 'username': username, 'password': password}
-    cookies = {
-        'yandex_login': '',
-        'yandexuid': '7986167821683047642',
-        '_ym_uid': '1686945243823701731',
-        '_ym_d': '1686945243',
-        'tmr_lvid': '6dfaf88cc5fc7a63da810b3638975cea',
-        'tmr_lvidTS': '1686945243391',
-        'vid': '873af10575d61ad3',
-        'zen_gid': '11291',
-        'KIykI': '1',
-        'addruid': 'n16R9TX4T96GB46RQ73l0Gk8r0',
-        'crookie': 'vg6vCy2sSLN3IguJi3hebBUryljWqn3XikbJgbKXylrP2zjdkjWZabI07McqbDa6pDmKVcxGxpvfpteJnjH/gW7Jg/4=',
-        'cmtchd': 'MTY5NTA1Mzc5ODU3OQ==',
-        'zen_sso_checked': '1',
-        'Session_id': 'noauth:1695491008',
-        'sessar': '1.1182.CiCTtdFAQ4KxcrqqRuU5OfTxPEx2NxOTPS0JmyNRfcUDHw.m6l8ornGoaYDXpT0QK4hRDMmGFMHEjuGMq-Io0ayrM8',
-        'ys': 'c_chck.1308660127',
-        'mda2_beacon': '1695491008335',
-        '_ym_isad': '1',
-        'Zen-User-Data': '{%22zen-theme%22:%22light%22}',
-        'ask_city': '+',
-        'tmr_detect': '1%7C1695496006520',
-        '_yasc': '0UuriHacVByJsdceSZ4O1Y++vvsW7Vmfv+MBQs80sAa1WxFv8oiPTbmOXzFbXBxdKiZkYQ==',
-    }
 
-    headers = {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cache-Control': 'max-age=0',
-        'Connection': 'keep-alive',
-        # 'Cookie': 'yandex_login=; yandexuid=7986167821683047642; _ym_uid=1686945243823701731; _ym_d=1686945243; tmr_lvid=6dfaf88cc5fc7a63da810b3638975cea; tmr_lvidTS=1686945243391; vid=873af10575d61ad3; zen_gid=11291; KIykI=1; addruid=n16R9TX4T96GB46RQ73l0Gk8r0; crookie=vg6vCy2sSLN3IguJi3hebBUryljWqn3XikbJgbKXylrP2zjdkjWZabI07McqbDa6pDmKVcxGxpvfpteJnjH/gW7Jg/4=; cmtchd=MTY5NTA1Mzc5ODU3OQ==; zen_sso_checked=1; Session_id=noauth:1695491008; sessar=1.1182.CiCTtdFAQ4KxcrqqRuU5OfTxPEx2NxOTPS0JmyNRfcUDHw.m6l8ornGoaYDXpT0QK4hRDMmGFMHEjuGMq-Io0ayrM8; ys=c_chck.1308660127; mda2_beacon=1695491008335; _ym_isad=1; Zen-User-Data={%22zen-theme%22:%22light%22}; ask_city=+; tmr_detect=1%7C1695496006520; _yasc=0UuriHacVByJsdceSZ4O1Y++vvsW7Vmfv+MBQs80sAa1WxFv8oiPTbmOXzFbXBxdKiZkYQ==',
-        'Referer': 'https://m.dzen.ru/news/story/RIA_Novosti_razvedchiki_unichtozhili_tank_Leopard_sehkipazhem_armii_FRG--a161111dcc1f1326047292a0c367568d?lang=ru&from=main_portal&fan=1&stid=STEwBuJff9DUvftYhaMr&t=1695493665&persistent_id=4666199950789852023&tst=1695494051&story=37ca3162-a963-5720-91c2-510fa300c030&issue_tld=ru&contour=exp0&utm_referrer=m.dzen.ru',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36',
-        'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
-        'sec-ch-ua-mobile': '?1',
-        'sec-ch-ua-platform': '"Android"',
-    }
 
     response = requests.get('https://m.dzen.ru/', cookies=cookies, headers=headers)
     # response = requests.get(url="https://dzen.ru", headers=headers,cookies=y)
