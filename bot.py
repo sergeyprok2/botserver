@@ -543,7 +543,7 @@ async def novosti_requests(message: Message):
         soup = bs(response.text, 'html.parser')
         g=soup.find_all('ul', class_="card-news__stories-Bu")
         t=soup.find('ul', class_="card-news__stories-Bu")
-
+        v.clear()
         # print(g)
         # print(t)
 
