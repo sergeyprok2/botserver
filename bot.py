@@ -106,8 +106,8 @@ async def dolgota(message: Message):
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36', }
     with open('dolgota.csv', 'w', encoding='utf-8') as file:
-        m = csv.writer(file)  # ,delimiter=';')
-        m.writerow(['Город', 'Восход', 'Заход', 'Долгота', 'Изменение', 'Сайт', ''])
+        # m = csv.writer(file)  # ,delimiter=';')
+        # m.writerow(['Город', 'Восход', 'Заход', 'Долгота', 'Изменение', 'Сайт', ''])
         d = ['Прокопьевск', 'Удачный    ', 'Норильск   ', 'Воркута    ', '', '', '', '', '', '', '', '', '', '', '', '',
              '',
              '']
@@ -140,7 +140,7 @@ async def dolgota(message: Message):
             zahod = soup.find('div', {'data-name': 'sunset'}).text
             dolgota = soup.find('div', {'data-name': 'daytime'}).find('span').text
             ismen = soup.find('div', class_='table-scroll').find_all('td')[5].text
-            m.writerow([gorod, vochod, zahod, dolgota, ismen, sait[p]])
+            # m.writerow([gorod, vochod, zahod, dolgota, ismen, sait[p]])
             p+=1
             hg=[vochod,zahod,dolgota,ismen,gorod]
             await message.answer(text='   '.join(hg))
