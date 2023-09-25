@@ -168,16 +168,65 @@ async def zakrep(message: Message):
 @dp.message(Text(text='Объявления bs4'))
 async def vk_bs4(message: Message):
     await message.answer(text='Объявления')
-    headers = {
-        'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36',
-        'Accept': '*/*'
-
-    }
+    # headers = {
+    #     'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36',
+    #     'Accept': '*/*'
+    #
+    # }
 
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
     await message.answer(text=k)
-    response = requests.get(url='https://m.vk.com/jobprk', headers=headers)
+    cookies = {
+        'remixua': '52%7C627%7C307%7C476692295',
+        'tmr_detect': '0%7C1695646817551',
+        'remixgp': '78bcd6c797a82101bdcc4a1f380f999c',
+        'remixmvk-fp': '2e2647e9b04ea453308d904ce3bfdc9d',
+        'tmr_lvid': 'b009b98b616d39897c140b09b44394d0',
+        'tmr_lvidTS': '1688810757718',
+        'remixcolor_scheme_mode': 'auto',
+        'remixcurr_audio': 'undefined',
+        'remixdark_color_scheme': '1',
+        'remixff': '10111111111101',
+        'remixaudio_show_alert_today': '0',
+        'remixmdv': 'HH5RUue1JeOYLvbp',
+        'remixmdevice': '2560/1440/1/!!-!!!!!!!!-/2560',
+        'remixpuad': 'eGmu2N0PGWfSS-Tijhc3s_en1-Pnl5SNf2Q4yAknj6U',
+        'remixsid': '1_aoJkb55zxXzomrqmknxQYk1WP-E-8ZD8srpt3DsdvmAeidHYD8HCyhgAyHEKq1yZa_BIR2PkWl6oxewpFB5XvQ',
+        'remixnsid': 'vk1.a.FfpUv_joD_jwALbHLLgqvZiBhQDD7OwkZWN0Foaoc5jQb7oEHaOETLTs9YhqcPM7RwucT00t2hxc2tgcHdwZBlgLpZOvJdp0eHxSR6LZgxOS8WrTzsI7pjJsTUxhQQUsOxGDchDXsFlYLVcGdrUWN0p21PNvchUHk7kjJQcOB_yvzk-QNJT2GS1bojdXtSsF',
+        'remixscreen_depth': '24',
+        'remixscreen_dpr': '1',
+        'remixscreen_height': '1440',
+        'remixscreen_orient': '1',
+        'remixscreen_width': '2560',
+        'remixscreen_winzoom': '1.50',
+        'remixnp': '1',
+        'remixrefkey': '5d55aa8c389e426175',
+        'remixuacck': 'f5dc8284cb6f573bc4',
+        'remixdt': '14400',
+        'remixrt': '0',
+        'remixstid': '1903471883_8ZpAAOnjsA0nVY7h1BLLhtlmOmagzUf9mVgo1GyWN8k',
+        'remixlang': '0',
+        'remixstlid': '9092169319773012830_Nzxh6t8Y5IbzFOBaNQItSSzvMWvfcHpBMm8S6P4Usd8',
+        'remixsuc': '1%3A',
+        'remixdmgr': 'f589f6c62ca906d5c768688019e1a413e5b6c8b641377990d32870968b361772',
+    }
+
+    headers = {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Sec-Fetch-Site': 'same-origin',
+        # 'Cookie': 'remixua=52%7C627%7C307%7C476692295; tmr_detect=0%7C1695646817551; remixgp=78bcd6c797a82101bdcc4a1f380f999c; remixmvk-fp=2e2647e9b04ea453308d904ce3bfdc9d; tmr_lvid=b009b98b616d39897c140b09b44394d0; tmr_lvidTS=1688810757718; remixcolor_scheme_mode=auto; remixcurr_audio=undefined; remixdark_color_scheme=1; remixff=10111111111101; remixaudio_show_alert_today=0; remixmdv=HH5RUue1JeOYLvbp; remixmdevice=2560/1440/1/!!-!!!!!!!!-/2560; remixpuad=eGmu2N0PGWfSS-Tijhc3s_en1-Pnl5SNf2Q4yAknj6U; remixsid=1_aoJkb55zxXzomrqmknxQYk1WP-E-8ZD8srpt3DsdvmAeidHYD8HCyhgAyHEKq1yZa_BIR2PkWl6oxewpFB5XvQ; remixnsid=vk1.a.FfpUv_joD_jwALbHLLgqvZiBhQDD7OwkZWN0Foaoc5jQb7oEHaOETLTs9YhqcPM7RwucT00t2hxc2tgcHdwZBlgLpZOvJdp0eHxSR6LZgxOS8WrTzsI7pjJsTUxhQQUsOxGDchDXsFlYLVcGdrUWN0p21PNvchUHk7kjJQcOB_yvzk-QNJT2GS1bojdXtSsF; remixscreen_depth=24; remixscreen_dpr=1; remixscreen_height=1440; remixscreen_orient=1; remixscreen_width=2560; remixscreen_winzoom=1.50; remixnp=1; remixrefkey=5d55aa8c389e426175; remixuacck=f5dc8284cb6f573bc4; remixdt=14400; remixrt=0; remixstid=1903471883_8ZpAAOnjsA0nVY7h1BLLhtlmOmagzUf9mVgo1GyWN8k; remixlang=0; remixstlid=9092169319773012830_Nzxh6t8Y5IbzFOBaNQItSSzvMWvfcHpBMm8S6P4Usd8; remixsuc=1%3A; remixdmgr=f589f6c62ca906d5c768688019e1a413e5b6c8b641377990d32870968b361772',
+        'Sec-Fetch-Dest': 'document',
+        'Accept-Language': 'ru',
+        'Sec-Fetch-Mode': 'navigate',
+        'Host': 'm.vk.com',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15',
+        'Referer': 'https://m.vk.com/jobprk',
+        # 'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+    }
+
+    response = requests.get('https://m.vk.com/jobprk', cookies=cookies, headers=headers)
     response.encoding = 'utf-8'
     soup = bs(response.text, 'html.parser')
     # print(soup.find('div',id="posts_container"))
