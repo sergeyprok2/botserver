@@ -2,9 +2,9 @@
 .idea/
 Gitbot/
 venv/
+.gitignore
 .env
 .mypy_cache/
 .vscode/
 __pycache__/
 cooc.py
-.gitignore
