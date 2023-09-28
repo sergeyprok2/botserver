@@ -559,7 +559,7 @@ async def novosti_requests(message: Message):
         t=soup.find('ul', class_="card-news__stories-Bu")
         v.clear()
         # print(g)
-        # print(t)
+
 
         for i in g:
             # v.append([k['href'] for k in i.find_all('a')])
