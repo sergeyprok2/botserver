@@ -6,4 +6,4 @@ venv/
 .mypy_cache/
 .vscode/
 __pycache__/
-cooc
+cooc.py
