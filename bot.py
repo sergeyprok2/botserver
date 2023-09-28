@@ -186,7 +186,7 @@ async def vk_bs4(message: Message):
     response = requests.get('https://m.vk.com/jobprk', cookies=cookies, headers=headers)
     response.encoding = 'utf-8'
     soup = bs(response.text, 'html.parser')
-    print(soup)
+    # print(soup)
     await message.answer(text='soup')
     # print(soup.find('div',id="posts_container"))
     # print(soup.find_all('div', class_="pi_text"))
