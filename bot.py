@@ -179,54 +179,9 @@ async def vk_bs4(message: Message):
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
     await message.answer(text=k)
-    cookies = {
-        'remixua': '52%7C627%7C307%7C476692295',
-        'tmr_detect': '0%7C1695646817551',
-        'remixgp': '78bcd6c797a82101bdcc4a1f380f999c',
-        'remixmvk-fp': '2e2647e9b04ea453308d904ce3bfdc9d',
-        'tmr_lvid': 'b009b98b616d39897c140b09b44394d0',
-        'tmr_lvidTS': '1688810757718',
-        'remixcolor_scheme_mode': 'auto',
-        'remixcurr_audio': 'undefined',
-        'remixdark_color_scheme': '1',
-        'remixff': '10111111111101',
-        'remixaudio_show_alert_today': '0',
-        'remixmdv': 'HH5RUue1JeOYLvbp',
-        'remixmdevice': '2560/1440/1/!!-!!!!!!!!-/2560',
-        'remixpuad': 'eGmu2N0PGWfSS-Tijhc3s_en1-Pnl5SNf2Q4yAknj6U',
-        'remixsid': '1_aoJkb55zxXzomrqmknxQYk1WP-E-8ZD8srpt3DsdvmAeidHYD8HCyhgAyHEKq1yZa_BIR2PkWl6oxewpFB5XvQ',
-        'remixnsid': 'vk1.a.FfpUv_joD_jwALbHLLgqvZiBhQDD7OwkZWN0Foaoc5jQb7oEHaOETLTs9YhqcPM7RwucT00t2hxc2tgcHdwZBlgLpZOvJdp0eHxSR6LZgxOS8WrTzsI7pjJsTUxhQQUsOxGDchDXsFlYLVcGdrUWN0p21PNvchUHk7kjJQcOB_yvzk-QNJT2GS1bojdXtSsF',
-        'remixscreen_depth': '24',
-        'remixscreen_dpr': '1',
-        'remixscreen_height': '1440',
-        'remixscreen_orient': '1',
-        'remixscreen_width': '2560',
-        'remixscreen_winzoom': '1.50',
-        'remixnp': '1',
-        'remixrefkey': '5d55aa8c389e426175',
-        'remixuacck': 'f5dc8284cb6f573bc4',
-        'remixdt': '14400',
-        'remixrt': '0',
-        'remixstid': '1903471883_8ZpAAOnjsA0nVY7h1BLLhtlmOmagzUf9mVgo1GyWN8k',
-        'remixlang': '0',
-        'remixstlid': '9092169319773012830_Nzxh6t8Y5IbzFOBaNQItSSzvMWvfcHpBMm8S6P4Usd8',
-        'remixsuc': '1%3A',
-        'remixdmgr': 'f589f6c62ca906d5c768688019e1a413e5b6c8b641377990d32870968b361772',
-    }
+    cookies = cooc.cookies_bs4
 
-    headers = {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Sec-Fetch-Site': 'same-origin',
-        # 'Cookie': 'remixua=52%7C627%7C307%7C476692295; tmr_detect=0%7C1695646817551; remixgp=78bcd6c797a82101bdcc4a1f380f999c; remixmvk-fp=2e2647e9b04ea453308d904ce3bfdc9d; tmr_lvid=b009b98b616d39897c140b09b44394d0; tmr_lvidTS=1688810757718; remixcolor_scheme_mode=auto; remixcurr_audio=undefined; remixdark_color_scheme=1; remixff=10111111111101; remixaudio_show_alert_today=0; remixmdv=HH5RUue1JeOYLvbp; remixmdevice=2560/1440/1/!!-!!!!!!!!-/2560; remixpuad=eGmu2N0PGWfSS-Tijhc3s_en1-Pnl5SNf2Q4yAknj6U; remixsid=1_aoJkb55zxXzomrqmknxQYk1WP-E-8ZD8srpt3DsdvmAeidHYD8HCyhgAyHEKq1yZa_BIR2PkWl6oxewpFB5XvQ; remixnsid=vk1.a.FfpUv_joD_jwALbHLLgqvZiBhQDD7OwkZWN0Foaoc5jQb7oEHaOETLTs9YhqcPM7RwucT00t2hxc2tgcHdwZBlgLpZOvJdp0eHxSR6LZgxOS8WrTzsI7pjJsTUxhQQUsOxGDchDXsFlYLVcGdrUWN0p21PNvchUHk7kjJQcOB_yvzk-QNJT2GS1bojdXtSsF; remixscreen_depth=24; remixscreen_dpr=1; remixscreen_height=1440; remixscreen_orient=1; remixscreen_width=2560; remixscreen_winzoom=1.50; remixnp=1; remixrefkey=5d55aa8c389e426175; remixuacck=f5dc8284cb6f573bc4; remixdt=14400; remixrt=0; remixstid=1903471883_8ZpAAOnjsA0nVY7h1BLLhtlmOmagzUf9mVgo1GyWN8k; remixlang=0; remixstlid=9092169319773012830_Nzxh6t8Y5IbzFOBaNQItSSzvMWvfcHpBMm8S6P4Usd8; remixsuc=1%3A; remixdmgr=f589f6c62ca906d5c768688019e1a413e5b6c8b641377990d32870968b361772',
-        'Sec-Fetch-Dest': 'document',
-        'Accept-Language': 'ru',
-        'Sec-Fetch-Mode': 'navigate',
-        'Host': 'm.vk.com',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.15',
-        'Referer': 'https://m.vk.com/jobprk',
-        # 'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-    }
+    headers = cooc.headers_bs4
 
     response = requests.get('https://m.vk.com/jobprk', cookies=cookies, headers=headers)
     response.encoding = 'utf-8'
@@ -277,11 +232,6 @@ async def vk_bs4(message: Message):
 @dp.message(Text(text='Объявления sel'))
 async def vk_selenium(message: Message):
     await message.answer(text='Объявления')
-    headers = {
-        'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36',
-        'Accept': '*/*'
-
-    }
 
     k = datetime.now().strftime('%d.%m.%y  %H:%M:%S')
     print(k)
@@ -322,54 +272,6 @@ async def vk_selenium(message: Message):
 # Этот хэндлер будет срабатывать, если апдейт не от админа
 v=[]   #  список ссылок новостей
 
-# cookies = {
-#             'KIykI': '1',
-#             'tmr_lvid': '8577b70851cc9276af8a0e173298cf19',
-#             'tmr_lvidTS': '1664015288689',
-#             'Zen-User-Data': '{%22zen-theme%22:%22light%22}',
-#             'tmr_detect': '1%7C1689937622793',
-#             '_yasc': 'kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==',
-#             '_ym_isad': '1',
-#             'Session_id': 'noauth:1689937589',
-#             'mda2_beacon': '1689937589064',
-#             'sessar': '1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc',
-#             'sso_status': 'sso.passport.yandex.ru:synchronized',
-#             'yandex_login': '',
-#             'yandexuid': '3150064901655672013',
-#             'ys': 'c_chck.3683064152',
-#             'zen_sso_checked': '1',
-#             '_ym_d': '1687116993',
-#             '_ym_uid': '1666960296819424637',
-#             'addruid': 'C16j8a1P7O2ts4G8U3J5o1r30X',
-#             'sso_checked': '1',
-#             'zen_gid': '11291',
-#         }
-
-# cookies = {
-#     "KIykI": "1",
-#     "tmr_lvid": "8577b70851cc9276af8a0e173298cf19",
-#     "tmr_lvidTS": "1664015288689",
-#     "Zen-User-Data": '{"zen-theme":"light"}',
-#     "tmr_detect": "1%7C1689937622793",
-#     "_yasc": "kH3Hhv5nYpZx6H6NAe5qVg0A6b0DWIk/cszl9je0h1uqMlsMN2DZpEst85haLg==",
-#     "_ym_isad": "1",
-#     "Session_id": "noauth:1689937589",
-#     "mda2_beacon": "1689937589064",
-#     "sessar": "1.827.CiC3RAAWhaaTyc_yUbfXQV5F7qpHbrkNketqpeTYBCrInA.JoqApHx6z-VnogFDyxBqZR0JXzQRB6nlGAP_AMUGdAc",
-#     "sso_status": "sso.passport.yandex.ru:synchronized",
-#     "yandex_login": "",
-#     "yandexuid": "3150064901655672013",
-#     "ys": "c_chck.3683064152",
-#     "zen_sso_checked": "1",
-#     "_ym_d": "1687116993",
-#     "_ym_uid": "1666960296819424637",
-#     "addruid": "C16j8a1P7O2ts4G8U3J5o1r30X",
-#     "sso_checked": "1",
-#     "zen_gid": "11291"
-# }
-
-
-v=[]
 @dp.message(Text(text='1'))
 async def novost_1(message: Message):
     await message.answer(text=v[0])
@@ -546,7 +448,6 @@ async def novosti_requests(message: Message):
     cookies = cooc.cookies_ya
 
     headers = cooc.headers_ya
-    # e=[<ul class="card-news__stories-Bu"><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Uchyonye_ishhut_sposob_vskryt_grobnicu_khozyaina_Terrakotovoj_armii--5ef93b379aa0a821108feea31132f175?lang=ru&amp;from=main_portal&amp;fan=1&amp;stid=pr0UXHCBOmnLrxfU_Lr0&amp;t=1695544607&amp;persistent_id=4666199950789887976&amp;tst=1695545006&amp;story=2041990d-9958-5828-a16a-9c601b4baa72&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/28627/254083361-1516267195536-square/logo-square)" title="RT на русском"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Учёные ищут способ вскрыть гробницу хозяина Терракотовой армии</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Gubernator_Starovojt_Bespilotnik_atakoval_zdanie_vcentre_Kurska--97c9f6c9bf36c53942633bbcfcee137e?lang=ru&amp;from=main_portal&amp;fan=1&amp;stid=D9wvSOaXBSlwQkqG8Q-t&amp;t=1695544607&amp;persistent_id=4666199950789889571&amp;tst=1695545006&amp;story=6a10adb2-e989-5816-b065-0bdeb4d1906a&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/26056/1116-1478692904205-square/logo-square)" title="Российская газета"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Губернатор Старовойт: Беспилотник атаковал здание в центре Курска</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/RIA_Novosti_razvedchiki_unichtozhili_tank_Leopard_sehkipazhem_armii_FRG--a161111dcc1f1326047292a0c367568d?lang=ru&amp;from=main_portal&amp;fan=1&amp;stid=BuJfSTEwZ9s3vftYhaMr&amp;t=1695544607&amp;persistent_id=4666199950789852023&amp;tst=1695545006&amp;story=37ca3162-a963-5720-91c2-510fa300c030&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/56838/8352-1665080113000-square/logo-square)" title="BFM.ru"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">РИА Новости: разведчики уничтожили танк Leopard с экипажем армии ФРГ</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Putin_zayavil_chto_izbiratelnaya_sistema_Rossii_schitaetsya_odnoj_izluchshikh_vmire--56f4d4c257e1c13547979b26c887f3ff?lang=ru&amp;from=main_portal&amp;fan=1&amp;stid=7KgjidlnJ7iW_nxRtwCt&amp;t=1695544607&amp;persistent_id=4666199950789883772&amp;tst=1695545006&amp;story=e6064c8c-8a11-5abf-bf12-c25ac87d7534&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/41096/1040-1640775230584-square/logo-square)" title="Газета.Ru"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Путин заявил, что избирательная система России считается одной из лучших в мире</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Politico_ukrainskim_gospitalyam_vZaporozhe_ne_khvataet_medikamentov--9697b284c62b6216391f15c4a491eecb?lang=ru&amp;from=main_portal&amp;fan=1&amp;stid=9U0kJ_5_GxOKO0E0oKPR&amp;t=1695544607&amp;persistent_id=4666199950789889325&amp;tst=1695545006&amp;story=e81bfcf8-3581-5402-9c9d-78376145485c&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/135513/1002-1544074003449-square/logo-square)" title="РИА Новости"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Politico: украинским госпиталям в Запорожье не хватает медикаментов</span></div></a></li></ul>, <ul class="card-news__stories-Bu"><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Gubernator_Sergej_Civilev_pozdravil_zhitelej_Kuzbassa_sDnem_mashinostroitelya--4251180bff66ab9b82a8137b12f31a11?lang=ru&amp;from=reg_portal&amp;fan=1&amp;stid=NPRU&amp;t=1695544607&amp;persistent_id=4666199950789814021&amp;tst=1695545006&amp;story=396b60ae-fbcb-50f5-8250-6840f9e7fc31&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/41096/254133784-1612858469.771003-square/logo-square)" title="Царьград"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Губернатор Сергей Цивилев поздравил жителей Кузбасса с Днем машиностроителя</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Kemerovchane_predlozhili_uvelichit_chislo_dorozhnykh_polos_navezde_vgorod--b35205e1bd44c6d70a90c2cf59b8be3f?lang=ru&amp;from=reg_portal&amp;fan=1&amp;stid=d8gq&amp;t=1695544607&amp;persistent_id=4666199950789880308&amp;tst=1695545006&amp;story=cd0ddc1e-86b4-5a1b-98f3-af09eb394604&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/135513/254157551-1670985624012-square/logo-square)" title="ProKuzbass.ru"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Кемеровчане предложили увеличить число дорожных полос на въезде в город</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Naobnovlennoj_ulice_SHornikova_sokhranyat_derevya_i_klumby--74d3468bddfda3b38c15d7edf2779ec2?lang=ru&amp;from=reg_portal&amp;fan=1&amp;stid=oW5K8ro2U6ApSGmA&amp;t=1695544607&amp;persistent_id=4666199950789870287&amp;tst=1695545006&amp;story=db671fdb-5725-58e8-bf8e-195c059916fc&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/41096/254133784-1612858469.771003-square/logo-square)" title="Царьград"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">На обновленной улице Шорникова сохранят деревья и клумбы</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Ceny_nabenzin_i_dizel_vKuzbasse_upadut--990e594ea80fedd976c456d54e91c4ea?lang=ru&amp;from=reg_portal&amp;fan=1&amp;stid=lBRYyI_beFg8ykICfSSE&amp;t=1695544607&amp;persistent_id=4666199950789338962&amp;tst=1695545006&amp;story=c54bb205-014a-531c-b972-080c6f1cb6ec&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/33291/14614-1590398026134-square/logo-square)" title="Ngs42.ru"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Цены на бензин и дизель в Кузбассе упадут</span></div></a></li><li class="card-news-story__story-6T card-news-story__mobile-TS" data-testid="news-item"><a aria-label="Открыть новости по теме" class="card-news-story__link-3I" href="https://m.dzen.ru/news/story/Kaluzhskaya_oblast_poluchit_61_million_namodulnye_oteli--ac523be7ecaed41ac5e4b2aef4fa6d13?lang=ru&amp;from=reg_portal&amp;fan=1&amp;stid=4iTp34DgtYg5MlGvRS8b&amp;t=1695544607&amp;persistent_id=4666199950789806507&amp;tst=1695545006&amp;story=b882fce8-e225-57ac-be91-acd4d0987e69&amp;issue_tld=ru&amp;contour=exp0&amp;utm_referrer=m.dzen.ru" rel="noopener nofollow" target="_blank"><div class="card-news-story__agencyLogo-wB card-news-story__mobile-TS" style="background-image:url(//avatars.dzeninfra.ru/get-ynews-logo/117671/2427-1576231723161-square/logo-square)" title="ТРК Ника"></div><div class="card-news-story__textContainer-18 card-news-story__isWhiteDzen-3k card-news-story__mobile-TS"><span aria-label="Заголовок" class="card-news-story__text-3F card-news-story__mobile-TS">Калужская область получит 61 миллион на модульные отели</span></div></a></li></ul>]
 
     response = requests.get('https://m.dzen.ru/', cookies=cookies, headers=headers)
     # response = requests.get(url="https://dzen.ru", headers=headers,cookies=y)
