@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+Gitbot/
+venv/
+.env
+.mypy_cache/
+.vscode/
+__pycache__/
+cooc
