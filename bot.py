@@ -210,9 +210,12 @@ async def vk_bs4(message: Message):
             r.append(u.find('div', class_="pi_text").text)
             continue
         if u.find('div', class_="pi_text") == None:
-            if u.find('img',class_='MediaGrid__imageSingle') !=None:
+            if u.find('img',class_='PhotoPrimaryAttachment__imageElement') !=None:
                 print('картинка')
-                d.append(u.find('img',class_='MediaGrid__imageSingle')['src'])
+                d.append(u.find('img',class_='PhotoPrimaryAttachment__imageElement')['src'])
+                continue
+            elif u.find('div', class_="poster__text") != None:
+                d.append(u.find('div', class_="poster__text").text)
                 continue
             print('фото')
             d.append(u.find('a', class_="MediaGrid__interactive")['href'])
