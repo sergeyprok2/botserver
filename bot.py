@@ -37,7 +37,7 @@ BOT_TOKEN: str = config1.tg_bot.token
 bot: Bot = Bot(token=BOT_TOKEN)
 dp: Dispatcher = Dispatcher()
 
-
+print()
 # Создаем асинхронную функцию
 async def set_main_menu(bot: Bot):
 
